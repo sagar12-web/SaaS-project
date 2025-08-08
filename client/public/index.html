@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Revolution - Revolutionary SaaS Platform. Where tasks feel alive and productivity soars to new heights."
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta Tags for SEO -->
+    <meta property="og:title" content="Revolution - Revolutionary SaaS Platform" />
+    <meta property="og:description" content="Where tasks feel alive and productivity soars to new heights. Experience the future of project management." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://revolution-saas.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Revolution - Revolutionary SaaS Platform" />
+    <meta name="twitter:description" content="Where tasks feel alive and productivity soars to new heights." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
+    
+    <title>Revolution - Revolutionary SaaS Platform</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      body {
+        background: #000;
+        overflow: hidden;
+      }
+      
+      #root {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      #root.loaded {
+        opacity: 1;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top: 3px solid #10b981;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this revolutionary app.</noscript>
+    
+    <!-- Loading spinner -->
+    <div class="loading-spinner" id="loading-spinner"></div>
+    
+    <div id="root"></div>
+    
+    <!-- Script to handle loading state -->
+    <script>
+      // Hide loading spinner when React app loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const spinner = document.getElementById('loading-spinner');
+          const root = document.getElementById('root');
+          
+          if (spinner) {
+            spinner.style.display = 'none';
+          }
+          
+          if (root) {
+            root.classList.add('loaded');
+            document.body.style.overflow = 'auto';
+          }
+        }, 500);
+      });
+      
+      // Handle theme preference
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light');
+      }
+    </script>
+  </body>
+</html> 
